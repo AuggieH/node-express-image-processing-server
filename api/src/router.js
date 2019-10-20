@@ -1,10 +1,8 @@
-const { Router } = require('express') // module 2
-const multer = require('multer') // module 2
-const path = require('path') // module 2
+const { Router } = require('express')
+const multer = require('multer')
+const path = require('path')
 
-const imageProcessor = require('./imageProcessor') // module 4
-
-const router = Router() // module 2
+const router = Router()
 
 const filename = (req, file, callback) => {
     callback(null, file.originalname)
@@ -13,7 +11,7 @@ const filename = (req, file, callback) => {
 const storage = multer.diskStorage({
   destination: 'api/uploads/',
   filename
-}) // module 2
+})
 
 const fileFilter = (req, file, callback) => {
   if (file.mimetype !== 'image/png') {
@@ -30,21 +28,14 @@ const upload = multer({
   storage,
   limits: { filesize: 10000 },
   fileFilter
-}) // module 2
+})
 
 router.post('/upload', upload.single('photo'), async (req, res) => {
   if (req.fileValidationError) {
     return res.status(400).json({ error: req.fileValidationError})
   }
 
-  await imageProcessor(req.file.filename)
-
-
   return res.status(201).json({ success: true })
-}) // module 2
+})
 
-router.get('/photo-viewer', (req, res) => {
-  res.sendFile(photoPath)
-}) // module 3
-
-module.exports = router // module 2
+module.exports = router
