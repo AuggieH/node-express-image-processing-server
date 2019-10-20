@@ -1,4 +1,4 @@
-const gm = require('gm') // module 3 whole file
+const gm = require('gm')
 
 const { workerData, parentPort } = require('worker_threads')
 
