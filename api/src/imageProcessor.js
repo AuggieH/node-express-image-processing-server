@@ -1,4 +1,4 @@
-const path = require('path') // module 4 whole file
+const path = require('path')
 const { Worker, isMainThread } = require('worker_threads')
 
 const pathToResizeWorker = path.resolve(__dirname, 'resizeWorker.js')
