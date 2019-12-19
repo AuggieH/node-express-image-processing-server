@@ -1,5 +1,8 @@
 const {Router} = require('express');
 const multer = require('multer');
+const path = require('path');
+
+const photoPath = path.resolve(__dirname, '../../client/photo-viewer.html');
 
 const router = Router();
 
