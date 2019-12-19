@@ -3,4 +3,5 @@ const {workerData, parentPort} = require('worker_threads');
 
 gm(workerData.source)
     .monochrome()
+    .writer(workerData.destination, () => {})
 ;
