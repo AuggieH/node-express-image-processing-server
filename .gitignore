@@ -64,3 +64,5 @@ typings/
 yarn.lock
 package-lock.json
 
+# uploads
+api/uploads

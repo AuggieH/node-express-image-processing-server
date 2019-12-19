@@ -26,4 +26,7 @@ const upload = multer({
   storage,
 });
 
+router.post('/upload', upload.single('photo'), (request, response) => {
+  if (request.fileValidationError) response.status(400).json({error: request.fileValidationError});
+});
 module.exports = router;
