@@ -20,4 +20,10 @@ const fileFilter = (request, file, callback) => {
     callback(null, true);
   }
 };
+
+const upload = multer({
+  fileFilter,
+  storage,
+});
+
 module.exports = router;
