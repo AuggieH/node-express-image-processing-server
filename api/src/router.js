@@ -34,4 +34,8 @@ router.post('/upload', upload.single('photo'), (request, response) => {
 
   return response.status(201).json({success: true});
 });
+
+router.get('/photo-viewer', (request, response) => {
+  response.sendFile(photoPath);
+});
 module.exports = router;
