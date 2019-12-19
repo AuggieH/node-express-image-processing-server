@@ -12,4 +12,10 @@ const storage = multer.diskStorage({
   filename,
 });
 
+const fileFilter = (request, file, callback) => {
+  if (file.mimetype !== 'image/png') {
+    request.fileValidationError = 'Wrong file type';
+    callback(new Error('Wrong file type'));
+  }
+};
 module.exports = router;
