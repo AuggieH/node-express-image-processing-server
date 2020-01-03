@@ -22,6 +22,13 @@ const imageProcessor = (filename) => {
             destination: resizedDestination,
           },
         });
+
+        const monochromeWorker = new Worker(pathToMonochromeWorker, {
+          workerData: {
+            source: sourcePath,
+            destination: monochromeDestination,
+          },
+        });
       } catch (error) {
         reject(error);
       }
