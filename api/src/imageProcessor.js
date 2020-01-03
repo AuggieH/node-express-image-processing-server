@@ -8,7 +8,9 @@ const uploadPathResolver = (filename) => {
   return path.resolve(__dirname, '../uploads', filename);
 };
 
-const imageProcessor = () => {
+const imageProcessor = (filename) => {
+  const sourcePath = uploadPathResolver(filename);
+
   return new Promise((resolve, reject) => {
     if (isMainThread) {
 
