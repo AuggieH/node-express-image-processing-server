@@ -10,6 +10,7 @@ const uploadPathResolver = (filename) => {
 
 const imageProcessor = (filename) => {
   const sourcePath = uploadPathResolver(filename);
+  const resizedDestination = uploadPathResolver('resized-' + filename);
 
   return new Promise((resolve, reject) => {
     if (isMainThread) {
