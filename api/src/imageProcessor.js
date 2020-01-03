@@ -15,7 +15,16 @@ const imageProcessor = (filename) => {
 
   return new Promise((resolve, reject) => {
     if (isMainThread) {
-
+      try {
+        const resizeWorker = new Worker(pathToResizeWorker, {
+          workerData: {
+            source: sourcePath,
+            destination: resizedDestination,
+          },
+        });
+      } catch (error) {
+        reject(error);
+      }
     } else {
       reject(new Error('not on main thread'));
     }
